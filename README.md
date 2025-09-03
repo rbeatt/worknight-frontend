@@ -20,11 +20,10 @@ Developed during the Kainos Academy program as part of a 7-week cohort with 3 we
 6. Access at `http://localhost:3000`
 
 ## Personal Contributions
-- Implemented job-role adding UI pages with form validation
-- Integrated API services for viewing and adding job roles
-- Developed authentication flow with token handling and session management
-- Wrote unit tests for controllers, services, and validators using Mocha and Chai
-- Configured Express app with middleware, routing, and Nunjucks templating
+- Developed user authentication flow with token handling and session management
+- Implemented frontend UI for viewing job roles, including API integration for data retrieval
+- Wrote unit tests for authentication controllers and services
+- Configured middleware for routing and session handling
 
 ## Notes for Reviewers
 - Source code is in `src/` and `controllers/`
