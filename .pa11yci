@@ -1,7 +1,0 @@
-{
-    "urls": [
-        "http://localhost:3000/",
-        "http://localhost:3000/view-roles",
-        "http://localhost:3000/add-new-job-roles"  
-    ]
-}
