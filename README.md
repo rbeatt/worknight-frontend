@@ -1,4 +1,4 @@
-# Worknight Frontend
+# Worknight
 
 A web application for managing job roles, built with Node.js, Express, and TypeScript.
 
