@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Job Role</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="/public/styles.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="https://www.kainos.com/favicon.png">
+    </head>
+    <body>
+        <header>
+            {% include "header.html" %}
+        </header>
+        <main class="container">
+
+            <h1>Add Job Role</h1>
+
+            <section id = "form">
+                <div class="container py-3">
+                    <div id="error-container">
+                        {% if errormessage %}
+                        <div id="error-container">
+                          <div class="alert alert-danger">
+                            {{ errormessage }}
+                          </div>
+                        </div>
+                        {% endif %}
+                      </div>
+                    {% if capability and capability.length > 0 %}
+                    {% if band and band.length > 0 %}
+                    <h2>Enter the new Job Role Details</h2> 
+                    <form action="/add-new-job-roles" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{ form.name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="specificationDesc" required>Specification Description</label>
+                            <textarea id="specificationDesc" name="specificationDesc" class="form-control" rows="5" cols="50" required>{{ form.specificationDesc }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="url">URL Link</label>
+                            <input type="text" id="url" name="url" class="form-control" value="{{ form.url }}" required>
+                        </div>
+                        <label for="bandId">Choose a band to add:</label>
+                        <select name="bandId" id = "bandId" value="{{ form.bandId }}">
+                        {% for Banding in band %}
+                        <option value="{{Banding.id}}">{{Banding.bandLevel}}</option>
+                        {% endfor %}
+                        </select>
+                        <label for="capabilityId">Choose a capability to add:</label>
+                        <select name="capabilityId" id = "capabilityId" value="{{ form.capabilityId }}">
+                        {% for Capability in capability %}
+                        <option value="{{Capability.id}}">{{Capability.name}}</option>
+                        {% endfor %}
+                    </select>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-warning" role="alert">
+                        Could not get Banding
+                    </div>
+                {% endif %}
+                {% else %}
+                <div class="alert alert-warning" role="alert">
+                    Could not get Capability
+                </div>
+                {% endif %}
+            </div>
+            </section>
+        </main>
+    </body>
+    <footer>
+        {% include "footer.html" %}
+    </footer>
+</html>

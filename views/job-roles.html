@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>View Job Roles</title>
+</head>
+    <link href="/public/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://www.kainos.com/favicon.png">
+    <title>View Job Roles</title>
+</head>
+<header>
+    {% include "header.html" %}
+</header>
+
+<body>
+    <div class="container">
+        <h1>View Job Roles</h1>
+    </div>
+    {% if selectedRole %}
+
+    
+    <div id="myModal" class="modal d-block" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="myModalLabel">Specification Summary</h2>
+                    <a href="/job-roles/"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button></a>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    <h3>{{selectedRole.name}}</h3>
+                    <p>{{selectedRole.specificationDesc}}</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/job-roles/"><button id="closeButton" class="btn btn-outline-success" data-dismiss="modal" aria-hidden="true">Close</button></a>
+                    <a href="{{selectedRole.url}}"><button id="moreInfoButton" type="submit" class="btn btn-success">More Information</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endif%}
+
+    <div class="container">
+        {% if roles and roles.length > 0 %}
+                <table class="table">
+                    <thead>
+                        <th id ="name" scope="col">Name</th>
+                        <th id ="cap" scope="col">Capability</th>
+                        <th id ="blvl" scope="col">Band Level</th>
+                        <th id ="spec" scope="col">Specification</th>
+                        <th id ="edit" scope="col">Edit</th>
+                    </thead>
+                {% for role in roles %}
+                    <tbody>
+                        <tr>
+                            <td>{{role.name}}</td>
+                            <td>{{role.capability}}</td>
+                            <td>{{role.bandLevel}}</td>
+                            <td><a id="viewButton" href="/job-roles/?showSpec={{role.name}}"><button type="button" class="btn btn-success">
+                                View Details
+                              </button></a></td>
+                            <td><a href="/edit-job-role?id={{ role.id }}">Edit</a></td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+                
+        {%else%}
+
+                <div class="alert alert-warning" role="alert">
+                Could not find Job Roles!
+                </div>
+
+        {%endif%}
+        </div>
+</body>
+<footer>
+    {% include "footer.html" %}
+</footer>
+</html>

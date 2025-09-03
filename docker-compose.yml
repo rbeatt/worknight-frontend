@@ -1,0 +1,25 @@
+version: '1'
+
+services:
+  frontend:
+    image: team1-ui:1.9
+    container_name: frontend
+    hostname: frontend
+    ports:
+      - 3000:3000
+    environment:
+      - API_URL
+    depends_on:
+      - backend
+
+  backend: 
+    image: team1-api:1.0
+    container_name: backend
+    hostname: backend
+    ports:
+      - 8080:8080
+    environment:
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_USERNAME=$DB_USERNAME
+    - DB_HOST=$DB_HOST
+    - DB_NAME=$DB_NAME

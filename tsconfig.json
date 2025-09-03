@@ -1,0 +1,16 @@
+{
+    "compilerOptions":{
+        "outDir": "./dist",
+        "target": "es5",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "types": ["mocha", "chai", "supertest"]
+    },
+    "include": ["./**/*", "*"],
+    "exclude": [
+        "./node_modules/**/*",
+        "./dist/**/*"
+    ]
+}

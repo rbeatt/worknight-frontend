@@ -1,0 +1,50 @@
+.logoHeader {
+    background-color: black;
+    margin-bottom: 40px;
+}
+
+.logoFooter {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    max-height: 50px;
+}
+
+.logoFooter .logo{
+    width: 40%;
+    height: auto;
+    padding: 20px;
+} 
+
+.logoFooter p{
+    color: white;
+    padding: 20px;
+    font-size: 1vw;
+    text-align: center;
+}
+    
+.logo{
+
+    width: 80%;
+    height: auto;
+    padding: 20px;
+
+}
+
+.logo:hover{
+    scale: 1.1;
+}
+
+.logoTitle{
+    color: white;
+    padding: 20px;
+    font-size: 2vw;
+    text-align: center;
+}
+.footerSpacer{
+    height: 50px;
+}
+.authLogo{
+    width: 40%;
+    height: auto;
+}
